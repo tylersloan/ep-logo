@@ -1,0 +1,196 @@
+$red: #ee3123;
+$white: #fff;
+
+* { transition: 150ms all ease-in-out; }
+body { padding: 5em 0; }
+
+svg { border-bottom: 2px solid #333; padding-bottom: 1em; }
+
+p {
+  color: #333;
+  font: {
+    family: "proxima-nova";
+    weight: 700;
+  }
+  text-transform: uppercase;
+}
+
+.ep-logo {
+  margin-top: 5em;
+
+  &:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+
+
+
+/* LOGO ELEMENT CONSTANTS */
+
+%logo {
+  float: left;
+  position: relative;
+
+  &:hover {
+    %logo__bg,
+    %logo__bg--bottom,
+    %logo__e:before,
+    %logo__e:after {
+      background: #000;
+    }
+
+    %logo__e {
+      transform: translate3d(-50%,-50%,0) rotate(-15deg);
+    }
+  }
+}
+
+%logo__bg {
+  background: $red;
+  position: absolute;
+  top: 0;right: 0;bottom: 0;left: 0;
+}
+
+%logo__bg--bottom {
+  background: $red;
+  left: 0px;
+  position: absolute;
+  width: 100%;
+
+  &:before {
+    background: $white;
+    content: '';
+    display: block;
+    height: 105%;
+    transform: skew(-45deg);
+    -webkit-transform: skew(-45deg);
+    width: 100%;
+  }
+}
+
+%logo__e {
+  background: $white;
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate3d(-50%,-50%,0);
+  z-index: 1;
+
+  &:after,
+  &:before {
+    background: $red;
+    content: '';
+    position: absolute;
+    right: -1px;
+    width: 69%;
+  }
+}
+
+%logo__text {
+  display: inline-block;
+  line-height: 0.85;
+}
+
+/* END LOGO ELEMENT CONSTANTS */
+
+
+
+/* LOGO MIXIN */
+
+@mixin logo-defaults($unit, $logo-dim, $e-dim) {
+  .logo {
+    @extend %logo;
+    height: $logo-dim;
+    width: $logo-dim;
+  }
+    
+  .logo__bg {
+    @extend %logo__bg;
+    border-radius: $unit*4 $unit*4 $unit*4 0;
+  }
+
+  .logo__bg--bottom {
+    @extend %logo__bg--bottom;
+    border-radius:  0 0 0px $unit;
+    bottom: -($unit*4.5);
+    height: $unit*4.5;
+
+    &:before {
+      border-radius:  $unit*1.5 0 0 0px;
+      margin-left: $unit*3.5;
+    }
+  }
+
+  .logo__e {
+    @extend %logo__e;
+    border-radius: $unit;
+    height: $e-dim;
+    width: $e-dim;
+    
+
+    &:after,
+    &:before {
+      border-radius: $unit*1.5 0 0 $unit*1.5;
+      height: $unit*.5;
+    }
+
+    &:after { bottom: $unit*3.75; }
+    &:before { top: $unit*3.75; }
+  }
+
+  .logo__text {
+    @extend %logo__text;
+    margin: $unit*4.5 0 0 $unit*4;
+  }
+}
+
+/* END LOGO MIXIN */
+
+
+
+.logo--small {
+  @include logo-defaults(2px, 44px, 26px);
+  
+  .logo__text { font-size: 17px; }
+}
+
+.logo--medium {
+  @include logo-defaults(4px, 88px, 52px);
+
+  .logo__e {
+    &:before,
+    &:after {
+      height: 2px;
+    }
+  }
+
+  .logo__text { font-size: 34px; }
+}
+
+.logo--xmedium {
+  @include logo-defaults(6px, 132px, 78px);
+
+  .logo__e {
+    &:before,
+    &:after {
+      height: 4px;
+    }
+  }
+
+  .logo__text { font-size: 51px; }
+}
+
+.logo--large {
+  @include logo-defaults(8px, 176px, 104px);
+
+  .logo__e {
+    &:before,
+    &:after {
+      height: 6px;
+    }
+  }
+
+  .logo__text { font-size: 68px; }
+}
