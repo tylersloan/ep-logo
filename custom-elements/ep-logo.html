@@ -1,0 +1,21 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+
+<polymer-element name="ep-logo" noscript>
+  <template>
+    <link rel="stylesheet" href="../css/ep-logo.css">
+    <div class="ep-logo logo--{{size}}">
+      <div class="logo">
+        <div class="logo__e"></div>
+        <div class="logo__bg">
+          <div class="logo__bg--bottom"></div>
+        </div>
+      </div>
+      <p class="logo__text">Erwin<br>Penland</p>
+    </div>
+  </template>
+  <script>
+    Polymer('ep-logo', {
+      size: 'small'
+    });
+  </script>
+</polymer-element>

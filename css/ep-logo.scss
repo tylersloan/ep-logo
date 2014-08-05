@@ -1,20 +1,6 @@
 $red: #ee3123;
 $white: #fff;
 
-* { transition: 150ms all ease-in-out; }
-body { padding: 5em 0; }
-
-svg { border-bottom: 2px solid #333; padding-bottom: 1em; }
-
-p {
-  color: #333;
-  font: {
-    family: "proxima-nova";
-    weight: 700;
-  }
-  text-transform: uppercase;
-}
-
 .ep-logo {
   margin-top: 5em;
 
@@ -24,8 +10,6 @@ p {
     clear: both;
   }
 }
-
-
 
 /* LOGO ELEMENT CONSTANTS */
 
@@ -89,8 +73,14 @@ p {
 }
 
 %logo__text {
+  color: #333;
   display: inline-block;
+  font: {
+    family: "proxima-nova";
+    weight: 700;
+  }
   line-height: 0.85;
+  text-transform: uppercase;
 }
 
 /* END LOGO ELEMENT CONSTANTS */
